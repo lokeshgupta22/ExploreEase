@@ -1,6 +1,7 @@
 import json
 import requests
 import streamlit as st
+import webbrowser
 
 
 def input_locations():
@@ -126,3 +127,4 @@ path = algorithm(graph)
 # st.write(path)
 if path:
     st.write(get_url(path))
+    webbrowser.open_new_tab(get_url(path))

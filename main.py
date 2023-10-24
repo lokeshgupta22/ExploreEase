@@ -102,8 +102,6 @@ def get_url(path):
 
 
 def streamlit_input():
-    st.title("Plan Your Trip !!!")
-
     locations = []
     num_locations = st.number_input(
         "Enter Number of Locations", min_value=1, value=1)
@@ -119,7 +117,7 @@ def streamlit_input():
     if st.button("Calculate Best Route"):
         return locations
 
-
+st.title("Welcome to Explore with Ease: Route Planning Excellence")
 # graph = input_locations()
 graph = streamlit_input()
 path = algorithm(graph)
@@ -134,3 +132,7 @@ if path:
     st.write(result)
     st.markdown(f'<a href="{url}" target="_blank">Show route on Google Maps</a>',
                 unsafe_allow_html=True)
+
+st.write("Made By: ")
+st.write("Lokesh Gupta")
+st.write("Ravikant Jain")

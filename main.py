@@ -67,7 +67,7 @@ def make_graph(graph):
 
 
 def algorithm(graph):
-    if len(graph)>0:
+    if graph:
         src = graph[0]
         dest = graph[-1]
         visited = []
@@ -94,9 +94,10 @@ def algorithm(graph):
 
 def get_url(path):
     url = "https://www.google.com/maps/dir/"
-    for i in path:
-        url += (f"{i}/")
-    return url
+    if path:
+        for i in path:
+            url += (f"{i}/")
+        return url
 
 
 def streamlit_input():

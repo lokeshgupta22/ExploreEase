@@ -124,4 +124,5 @@ path = algorithm(graph)
 # print(path)
 # print(get_url(path))
 # st.write(path)
-st.write(get_url(path))
+if path:
+    st.write(get_url(path))

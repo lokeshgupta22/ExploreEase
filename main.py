@@ -97,13 +97,21 @@ def get_url(path):
         url += (f"{i}/")
     return url
 
-# st.title("Plan Your Trip !!!")
-# st.header("This is a header")
-# st.subheader("This is a subheader")
+
+num = st.text_input('Insert number of cities to be visited')
+try:
+    num=int(num)
+except:
+    st.write('Now')
+
+dis=[]
+if st.button('next'):
+    for i in range(num):
+        dis.append(st.text_input(f'City {i}'))
 
 
-graph = input_locations()
-# graph = ['Mumbai', 'Manali', 'Rishikesh']
-path = algorithm(graph)
-print(path)
-print(get_url(path))
+# graph = input_locations()
+# # graph = ['Mumbai', 'Manali', 'Rishikesh']
+# path = algorithm(graph)
+# print(path)
+# print(get_url(path))

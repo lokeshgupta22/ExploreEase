@@ -122,7 +122,6 @@ st.title("Welcome to Explore with Ease: Route Planning Excellence")
 graph = streamlit_input()
 path = algorithm(graph)
 url = get_url(path)
-print(path)
 if path:
     result = ''
     for place in path:

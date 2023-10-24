@@ -117,23 +117,20 @@ def streamlit_input():
             locations.append(st.text_input(f"Location {i+1}"))
 
     if st.button("Calculate Best Route"):
-        algorithm(locations)
+        return locations
 
 
 # graph = input_locations()
 graph = streamlit_input()
 path = algorithm(graph)
 url = get_url(path)
-
+print(path)
 if path:
     result = ''
     for place in path:
-
         result += place
         if place != path[-1]:
             result += ' >> '
-
     st.write(result)
-
     st.markdown(f'<a href="{url}" target="_blank">Show route on Google Maps</a>',
                 unsafe_allow_html=True)

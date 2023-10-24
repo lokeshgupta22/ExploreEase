@@ -97,13 +97,30 @@ def get_url(path):
         url += (f"{i}/")
     return url
 
-# st.title("Plan Your Trip !!!")
-# st.header("This is a header")
-# st.subheader("This is a subheader")
 
+def streamlit_input():
+    st.title("Plan Your Trip !!!")
 
-graph = input_locations()
-# graph = ['Mumbai', 'Manali', 'Rishikesh']
+    locations = []
+    num_locations = st.number_input(
+        "Enter Number of Locations", min_value=1, value=1)
+
+    for i in range(num_locations):
+        if i == 0:
+            locations.append(st.text_input(f"Source Location {i+1}"))
+        elif i == num_locations - 1:
+            locations.append(st.text_input(f"Destination Location {i+1}"))
+        else:
+            locations.append(st.text_input(f"Location {i+1}"))
+            
+    if st.button("Calculate Best Route"):
+        return locations
+
+# graph = input_locations()
+graph = streamlit_input()
+# # graph = ['Mumbai', 'Manali', 'Rishikesh']
 path = algorithm(graph)
-print(path)
-print(get_url(path))
+# print(path)
+# print(get_url(path))
+st.write(path)
+st.write(get_url(path))

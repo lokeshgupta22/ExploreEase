@@ -67,28 +67,29 @@ def make_graph(graph):
 
 
 def algorithm(graph):
-    src = graph[0]
-    dest = graph[-1]
-    visited = []
-    visitedDist = []
-    visited.append(src)
-    visitedDist.append(0)
-    savemoney = make_graph(graph)
-    allplaces = list(savemoney.keys())
-    alldist = list(savemoney.values())
-    for j in range(len(graph)-2):
-        temp = []
-        for i in allplaces:
-            if (src in i) and (dest not in i) and (savemoney[i] not in visitedDist):
-                temp.append(savemoney[i])
-        next = allplaces[alldist.index(min(temp))]
-        next = next.replace(src, "")
-        visited.append(next)
-        visitedDist.append(min(temp))
-        src = next
+    if len(graph)>0:
+        src = graph[0]
+        dest = graph[-1]
+        visited = []
+        visitedDist = []
+        visited.append(src)
+        visitedDist.append(0)
+        savemoney = make_graph(graph)
+        allplaces = list(savemoney.keys())
+        alldist = list(savemoney.values())
+        for j in range(len(graph)-2):
+            temp = []
+            for i in allplaces:
+                if (src in i) and (dest not in i) and (savemoney[i] not in visitedDist):
+                    temp.append(savemoney[i])
+            next = allplaces[alldist.index(min(temp))]
+            next = next.replace(src, "")
+            visited.append(next)
+            visitedDist.append(min(temp))
+            src = next
 
-    visited.append(dest)
-    return visited
+        visited.append(dest)
+        return visited
 
 
 def get_url(path):
@@ -107,9 +108,9 @@ def streamlit_input():
 
     for i in range(num_locations):
         if i == 0:
-            locations.append(st.text_input(f"Source Location {i+1}"))
+            locations.append(st.text_input(f"Source Location"))
         elif i == num_locations - 1:
-            locations.append(st.text_input(f"Destination Location {i+1}"))
+            locations.append(st.text_input(f"Destination Location"))
         else:
             locations.append(st.text_input(f"Location {i+1}"))
             
@@ -118,9 +119,8 @@ def streamlit_input():
 
 # graph = input_locations()
 graph = streamlit_input()
-# # graph = ['Mumbai', 'Manali', 'Rishikesh']
 path = algorithm(graph)
 # print(path)
 # print(get_url(path))
-st.write(path)
+# st.write(path)
 st.write(get_url(path))

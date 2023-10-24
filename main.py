@@ -117,7 +117,10 @@ def streamlit_input():
     if st.button("Calculate Best Route"):
         return locations
 
-st.title("Welcome to Explore with Ease: Route Planning Excellence")
+
+st.title("Welcome to Explore Ease: Route Planning Excellence")
+st.write("<b>Project By: Lokesh Gupta & Ravikant Jain</b>",
+         unsafe_allow_html=True)
 # graph = input_locations()
 graph = streamlit_input()
 path = algorithm(graph)
@@ -131,7 +134,3 @@ if path:
     st.write(result)
     st.markdown(f'<a href="{url}" target="_blank">Show route on Google Maps</a>',
                 unsafe_allow_html=True)
-
-st.write("Made By: ")
-st.write("Lokesh Gupta")
-st.write("Ravikant Jain")

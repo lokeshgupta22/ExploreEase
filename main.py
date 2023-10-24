@@ -90,20 +90,7 @@ def algorithm(graph):
             src = next
 
         visited.append(dest)
-        # st.write(get_url(visited))
-        website_url=get_url(visited)
-        rstr=''
-        for places in visited:
-            
-            rstr=rstr+places
-            if places!=visited[-1]:
-                rstr=rstr+' >> '
-        
-        st.write(rstr)
-        
-        # st.write(visited)
-        st.markdown(f'<a href="{website_url}" target="_blank">Show route on Google Maps</a>', unsafe_allow_html=True)
-
+        return visited
 
 
 def get_url(path):
@@ -128,13 +115,24 @@ def streamlit_input():
             locations.append(st.text_input(f"Destination Location"))
         else:
             locations.append(st.text_input(f"Location {i+1}"))
-            
+
     if st.button("Calculate Best Route"):
         algorithm(locations)
 
+
 # graph = input_locations()
 graph = streamlit_input()
+path = algorithm(graph)
+url = get_url(path)
 
-# print(path)
-# print(get_url(path))
-# st.write(path)
+result = ''
+for place in path:
+
+    result += place
+    if place != path[-1]:
+        result += ' >> '
+
+st.write(result)
+
+st.markdown(f'<a href="{url}" target="_blank">Show route on Google Maps</a>',
+            unsafe_allow_html=True)

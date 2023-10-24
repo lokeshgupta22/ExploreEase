@@ -97,12 +97,13 @@ def get_url(path):
         url += (f"{i}/")
     return url
 
-st.title("Plan Your Trip !!!")
-st.header("This is a header") 
-st.subheader("This is a subheader")
+# st.title("Plan Your Trip !!!")
+# st.header("This is a header")
+# st.subheader("This is a subheader")
 
-# graph = input_locations()
+
+graph = input_locations()
 # graph = ['Mumbai', 'Manali', 'Rishikesh']
-# path = algorithm(graph)
-# print(path)
-# print(get_url(path))
+path = algorithm(graph)
+print(path)
+print(get_url(path))

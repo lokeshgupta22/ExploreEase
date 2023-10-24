@@ -47,7 +47,7 @@ def get_distance(myroute):
     querystring = {"route": jsonroute}
 
     headers = {
-        "X-RapidAPI-Key": "c129526652msh5a1f38966b3d5d1p1148fdjsn4718df801cc0",
+        "X-RapidAPI-Key": "fb2a71e4bcmsh4200c850939add6p19f078jsn2c9524f86e8d",
         "X-RapidAPI-Host": "distanceto.p.rapidapi.com"
     }
 
@@ -90,7 +90,20 @@ def algorithm(graph):
             src = next
 
         visited.append(dest)
-        return visited
+        # st.write(get_url(visited))
+        website_url=get_url(visited)
+        rstr=''
+        for places in visited:
+            
+            rstr=rstr+places
+            if places!=visited[-1]:
+                rstr=rstr+' >> '
+        
+        st.write(rstr)
+        
+        # st.write(visited)
+        st.markdown(f'<a href="{website_url}" target="_blank">Show route on Google Maps</a>', unsafe_allow_html=True)
+
 
 
 def get_url(path):
@@ -117,15 +130,11 @@ def streamlit_input():
             locations.append(st.text_input(f"Location {i+1}"))
             
     if st.button("Calculate Best Route"):
-        return locations
+        algorithm(locations)
 
 # graph = input_locations()
 graph = streamlit_input()
-path = algorithm(graph)
+
 # print(path)
 # print(get_url(path))
 # st.write(path)
-if path:
-    st.write(get_url(path))
-    webbrowser.open_new_tab(get_url(path))
-    st.experimental_set_query_params(url=get_url(path))

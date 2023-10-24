@@ -1,6 +1,7 @@
 import json
 import requests
 import streamlit as st
+import webbrowser
 
 
 def input_locations():
@@ -137,4 +138,3 @@ graph = streamlit_input()
 # print(path)
 # print(get_url(path))
 # st.write(path)
-

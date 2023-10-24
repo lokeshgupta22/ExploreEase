@@ -128,3 +128,4 @@ path = algorithm(graph)
 if path:
     st.write(get_url(path))
     webbrowser.open_new_tab(get_url(path))
+    st.experimental_set_query_params(url=get_url(path))

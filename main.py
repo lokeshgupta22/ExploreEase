@@ -1,8 +1,6 @@
 import json
 import requests
 import streamlit as st
-import webbrowser
-
 
 def input_locations():
     graph = []
@@ -47,7 +45,7 @@ def get_distance(myroute):
     querystring = {"route": jsonroute}
 
     headers = {
-        "X-RapidAPI-Key": "fb2a71e4bcmsh4200c850939add6p19f078jsn2c9524f86e8d",
+        "X-RapidAPI-Key": "74999fd60fmsha889ba169552a9ep1a8b23jsn0c2a19cff9da",
         "X-RapidAPI-Host": "distanceto.p.rapidapi.com"
     }
 
